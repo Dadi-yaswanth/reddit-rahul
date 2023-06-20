@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+</head>
+<body>
+<h1>Upload file</h1>
+<form
+        th:object="${postDto}"
+        th:action="@{/submit}"
+        method="post"
+        enctype="multipart/form-data"
+>
+
+    <label for="title">Title:</label>
+    <input type="text" name="title" th:field="*{title}" id="title">
+
+    <label for="content">Content:</label>
+    <input type="text" name="content" th:field="*{content}" id="content">
+
+    <input type="file" name="file" multiple> </br>
+    <input type="submit">
+</form>
+</body>
+</html>
