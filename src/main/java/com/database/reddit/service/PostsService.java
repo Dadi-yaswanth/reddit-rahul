@@ -56,11 +56,18 @@ public class PostsService {
         return postRepository.save(post);
     }
 
-    public Post getPost(Long postId){
+    public Post getPost(Long postId) {
         return postRepository.findById(postId).get();
     }
 
-    public Post getCommunityPost(String communityName, Long postId){
-        return postRepository.findPostsByCommunityName(communityName, postId).orElseThrow();
+    public Post getPostByType(String typeOfAccount, String username, Long postId) {
+        if (typeOfAccount.equalsIgnoreCase("r")) {
+            return postRepository.findPostsByCommunityName(username, postId).orElseThrow();
+        }
+        else if(typeOfAccount.equalsIgnoreCase("u")){
+            System.out.println("user");
+            return postRepository.findPostsByUsername(username, postId).orElseThrow();
+        }
+        return null;
     }
 }

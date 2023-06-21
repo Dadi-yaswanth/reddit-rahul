@@ -67,7 +67,8 @@ public class PostsController {
                          @PathVariable String typeOfAccount,
                          @PathVariable String username,
                          Model model){
-        model.addAttribute("postData",postsService.getCommunityPost(username,postId));
+        System.out.println(username);
+        model.addAttribute("postData",postsService.getPostByType(typeOfAccount,username,postId));
         model.addAttribute("commentDto",new CommentDto());
         return "viewpost";
     }
