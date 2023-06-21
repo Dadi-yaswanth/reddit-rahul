@@ -24,10 +24,11 @@ import java.io.IOException;
 public class PostsController {
     private final FileService fileService;
     private final PostsService postsService;
-    @GetMapping("/")
-    public String viewCommunity(){
-        return "viewpost";
-    }
+
+//    @GetMapping("/")
+//    public String viewCommunity(){
+//        return "home";
+//    }
 
     @GetMapping("/post/{postId}")
     public String viewPost(Model model, @PathVariable Long postId){

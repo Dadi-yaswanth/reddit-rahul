@@ -3,6 +3,7 @@ package com.database.reddit.service;
 import com.database.reddit.Dto.CommentDto;
 import com.database.reddit.entity.Comment;
 import com.database.reddit.entity.Post;
+import com.database.reddit.entity.Reply;
 import com.database.reddit.entity.User;
 import com.database.reddit.repository.CommentRepository;
 import com.database.reddit.repository.PostRepository;
@@ -30,6 +31,21 @@ public class CommentService {
         comment.setUser(user);
 
         postComments.add(comment);
+        post.setComments(postComments);
         postRepository.save(post);
+        System.out.println("yoo");
+    }
+
+    public void addReply(Long commentId,CommentDto commentDto){
+        User user = userRepository.findById(1L).orElseThrow(); //have to replace it with authorization user
+        Comment comment = commentRepository.findById(commentId).orElseThrow();
+        List<Reply> commentReplies = comment.getReplyComments();
+
+        Reply reply = new Reply();
+        reply.setContent(commentDto.getComment());
+        reply.setUser(user);
+        commentReplies.add(reply);
+        comment.setReplyComments(commentReplies);
+        commentRepository.save(comment);
     }
 }

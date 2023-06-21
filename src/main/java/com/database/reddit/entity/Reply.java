@@ -30,15 +30,11 @@ public class Reply {
     @Column(name = "down_vote")
     private long downVote;
 
-    @ManyToOne(targetEntity = Post.class)
+    @ManyToOne
     @JoinColumn(name = "post_id")
     private Post post;
 
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @ManyToOne(targetEntity = Comment.class)
-    @JoinColumn(name="comment_id")
-    private Comment comment;
 }

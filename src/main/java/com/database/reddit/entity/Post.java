@@ -62,12 +62,15 @@ public class Post {
     @JoinColumn(name = "post_id")
     private List<Media> mediaList;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(orphanRemoval = true,cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id")
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "comment_id")
     private List<Reply> replies;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(orphanRemoval = true)
+    @JoinColumn(name = "post_votes")
     private List<Vote> postVotes;
 }

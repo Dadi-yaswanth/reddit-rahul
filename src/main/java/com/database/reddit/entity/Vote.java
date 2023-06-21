@@ -25,8 +25,4 @@ public class Vote {
     @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "user_id")
     private User user;
-
-    @ManyToOne(targetEntity = Post.class)
-    @JoinColumn(name = "post_id")
-    private Post post;
 }
